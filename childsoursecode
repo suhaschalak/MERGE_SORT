@@ -1,0 +1,61 @@
+def sort_list(lst):
+    """
+    Sorts a list in ascending order using the built-in sort function.
+    
+    Parameters:
+    lst (list): The list to be sorted.
+    
+    Returns:
+    list: The sorted list.
+    """
+    return sorted(lst)
+
+def merge_sorted_lists(lst1, lst2):
+    """
+    Merges two sorted lists into one sorted list.
+    
+    Parameters:
+    lst1 (list): The first sorted list.
+    lst2 (list): The second sorted list.
+    
+    Returns:
+    list: The merged and sorted list.
+    """
+    merged_list = []
+    i, j = 0, 0
+    
+    while i < len(lst1) and j < len(lst2):
+        if lst1[i] < lst2[j]:
+            merged_list.append(lst1[i])
+            i += 1
+        else:
+            merged_list.append(lst2[j])
+            j += 1
+            
+    # Append remaining elements of lst1, if any
+    while i < len(lst1):
+        merged_list.append(lst1[i])
+        i += 1
+    
+    # Append remaining elements of lst2, if any
+    while j < len(lst2):
+        merged_list.append(lst2[j])
+        j += 1
+    
+    return merged_list
+
+# Example usage:
+if __name__ == "__main__":
+    list1 = [3, 1, 4, 1, 5]
+    list2 = [9, 2, 6, 5, 3]
+
+    # Sort the lists
+    sorted_list1 = sort_list(list1)
+    sorted_list2 = sort_list(list2)
+
+    print(f"Sorted List 1: {sorted_list1}")
+    print(f"Sorted List 2: {sorted_list2}")
+
+    # Merge the sorted lists
+    merged_list = merge_sorted_lists(sorted_list1, sorted_list2)
+    print(f"Merged and Sorted List: {merged_list}")
